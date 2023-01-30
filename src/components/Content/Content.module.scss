@@ -1,0 +1,24 @@
+.banner {
+    max-height: 200px;
+    max-width: 100%;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.info {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.user_avatar {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    display: block;
+}
+
+.chat {
+    margin-bottom: 20px;
+}

@@ -1,0 +1,18 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  padding: 0 20px;
+  max-width: 1000px;
+}
+
+.header, .page  {
+  margin-bottom: 30px;
+}
+
+.page {
+  flex: 1;
+}
