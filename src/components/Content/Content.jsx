@@ -1,6 +1,6 @@
 import banner from "../../media/img/banner.jpeg";
 import avatar from "../../media/img/avatar.jpg";
-import Messages from "../Messages/Messages";
+import Posts from "../Posts/Posts";
 
 import styles from "./Content.module.scss";
 
@@ -32,14 +32,9 @@ const Content = () => {
           </div>
         </div>
       </div>
-      <div className={styles.chat}>
-        <div className="chat__title">My posts</div>
-        <textarea className="chat__input"></textarea>
-        <button className="chat__btn" type="submit">
-          Send
-        </button>
+      <div className={styles.posts}>
+        <Posts />
       </div>
-        <Messages/>
     </div>
   );
 };

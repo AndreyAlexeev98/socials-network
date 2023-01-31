@@ -1,8 +1,8 @@
-import message_avatar from "../../media/img/message-avatar.jpg"
+import message_avatar from "../../../media/img/message-avatar.jpg"
 
-import styles from "./Messages.module.scss"
+import styles from "./Post.module.scss"
 
-const Messages = () => {
+const Post = (props) => {
   return (
     <ul className={styles.root}>
       <li className={styles.item}>
@@ -13,11 +13,10 @@ const Messages = () => {
         />
         <div>
             <div className={styles.author}>
-                Big Bull
+                {props.username}
             </div>
             <div className={styles.text}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet,
-            assumenda!
+              {props.message}
             </div>
         </div>
       </li>
@@ -25,4 +24,4 @@ const Messages = () => {
   );
 };
 
-export default Messages;
+export default Post;
