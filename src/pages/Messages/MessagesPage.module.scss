@@ -1,0 +1,13 @@
+.title {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.sidebar {
+    border-right: 2px solid skyblue;
+}

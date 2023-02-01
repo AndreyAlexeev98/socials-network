@@ -1,7 +1,7 @@
 import styles from "./App.module.scss";
 
 import Header from "./components/Header/Header";
-import Main from "./pages/Main/Main";
+import Main from "./layout/MainLayout/MainLayout";
 import Footer from "./components/Footer/Footer";
 
 console.log(styles);

@@ -1,8 +1,8 @@
 import banner from "../../media/img/banner.jpeg";
 import avatar from "../../media/img/avatar.jpg";
-import Posts from "../Posts/Posts";
+import Posts from "../../components/Posts/Posts";
 
-import styles from "./Content.module.scss";
+import styles from "./Profile.module.scss";
 
 const Content = () => {
   return (
