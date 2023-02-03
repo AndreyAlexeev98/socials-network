@@ -1,26 +1,34 @@
-import {BrowserRouter ,Route} from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 
+import Header from '../../components/Header/Header';
 import Sidebar from "../../components/Sidebar/Sidebar";
-import Profile from "../../pages/Profile/Profile";
-import MessagesPage from "../../pages/Messages/MessagesPage";
-
+import Footer from '../../components/Footer/Footer';
 
 import styles from "./MainLayout.module.scss";
 
-const Main = () => {
+const MainLayout = () => {
   return (
-    <BrowserRouter>
-      <main className={styles.root}>
+    <div className={styles.root}>
+      <div className={styles.header}>
+        <div className={styles.container}>
+          <Header />
+        </div>
+      </div>
+      <div className={`${styles.content} ${styles.container}`}>
         <div className={styles.sidebar}>
-          <Sidebar />
+          <Sidebar/>
         </div>
-        <div className={styles.content}>
-          <Route path="/profile" component={Profile} />
-          <Route path="/messages" component={MessagesPage} />
+        <div>
+          <Outlet />
         </div>
-      </main>
-    </BrowserRouter>
+      </div>
+      <div className={styles.footer}>
+        <div className={styles.container}>
+          <Footer />
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default Main;
+export default MainLayout;

@@ -1,11 +1,40 @@
 .root {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.sidebar {
-    margin-right: 30px;
+.container {
+  padding: 0 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header, .content  {
+  margin-bottom: 30px;
+}
+
+.header {
+  background-color: #007accc4;
+  padding: 15px 0;
 }
 
 .content {
-    flex: 1;
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+
+.sidebar {
+  margin-right: 30px;
+}
+
+.content {
+  flex: 1;
+}
+
+.footer {
+  width: 100%;
+  padding: 15px 0;
+  background-color: #007accc4;
 }

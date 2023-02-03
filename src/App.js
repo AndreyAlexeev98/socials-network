@@ -1,23 +1,21 @@
-import styles from "./App.module.scss";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
-import Header from "./components/Header/Header";
-import Main from "./layout/MainLayout/MainLayout";
-import Footer from "./components/Footer/Footer";
+import MainLayout from "./layout/MainLayout/MainLayout";
+import Profile from "./pages/Profile/Profile";
+import MessagesPage from "./pages/Messages/MessagesPage";
 
-console.log(styles);
+// import styles from "./App.module.scss";
 
 function App() {
   return (
-    <div className={styles.root}>
-      <div className={styles.header}>
-        <Header />
-      </div>
-      <div className={`${styles.page} ${styles.container}`}>
-        <Main />
-      </div>
-
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Profile />} />
+          <Route path="/messages" element={<MessagesPage />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
