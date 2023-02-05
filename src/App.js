@@ -11,8 +11,8 @@ function App(props) {
     <Router>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<ProfilePage userData={props.userData} posts={props.posts} />} />
-          <Route path="/messages" element={<MessagesPage messages={props.messages} chats={props.chats} />} />
+          <Route index element={<ProfilePage userData={props.appState.profile.userData} posts={props.appState.profile.posts} />} />
+          <Route path="/messages" element={<MessagesPage messages={props.appState.messages.messages} chats={props.appState.messages.chats} />} />
         </Route>
       </Routes>
     </Router>
