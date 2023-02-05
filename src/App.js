@@ -6,13 +6,13 @@ import MessagesPage from "./pages/MessagesPage/MessagesPage";
 
 // import styles from "./App.module.scss";
 
-function App() {
+function App(props) {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<ProfilePage />} />
-          <Route path="/messages" element={<MessagesPage />} />
+          <Route index element={<ProfilePage userData={props.userData} posts={props.posts} />} />
+          <Route path="/messages" element={<MessagesPage messages={props.messages} chats={props.chats} />} />
         </Route>
       </Routes>
     </Router>

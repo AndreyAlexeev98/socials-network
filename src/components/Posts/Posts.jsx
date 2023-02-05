@@ -4,7 +4,6 @@ import Button from '../share/Button/Button';
 import styles from './Posts.module.scss';
 
 const Posts = (props) => {
-
     return (
         <div>
             <div className={styles.title}>My posts</div>

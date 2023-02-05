@@ -1,7 +1,9 @@
-import style from './Chats.module.scss';
-// import avatarPath from '../../media/img/message-avatar.jpg';
+import { NavLink } from 'react-router-dom';
 
 import Chat from './Chat/Chat';
+
+import style from './Chats.module.scss';
+// import avatarPath from '../../media/img/message-avatar.jpg';
 
 const Chats = (props) => {
   return (
@@ -10,7 +12,10 @@ const Chats = (props) => {
         {props.chats.map( (chat) => {
           return (
           <li className={style.item} key={chat.id}>
-             <Chat avatar={chat.avatarPath} name={chat.name} preview={chat.preview} />  
+            <NavLink to={chat.id}>
+              <Chat avatar={chat.avatarPath} name={chat.name} preview={chat.preview} />
+            </NavLink>
+               
           </li>
           )})}
       </ul>
