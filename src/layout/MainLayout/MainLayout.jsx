@@ -6,7 +6,7 @@ import Footer from '../../components/Footer/Footer';
 
 import styles from "./MainLayout.module.scss";
 
-const MainLayout = () => {
+const MainLayout = (props) => {
   return (
     <div className={styles.root}>
       <div className={styles.header}>
@@ -16,7 +16,7 @@ const MainLayout = () => {
       </div>
       <div className={`${styles.content} ${styles.container}`}>
         <div className={styles.sidebar}>
-          <Sidebar/>
+          <Sidebar sidebar={props.sidebar} />
         </div>
         <div>
           <Outlet />

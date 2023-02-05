@@ -10,7 +10,7 @@ function App(props) {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
+        <Route path="/" element={<MainLayout sidebar={props.appState.sidebar} />}>
           <Route index element={<ProfilePage userData={props.appState.profile.userData} posts={props.appState.profile.posts} />} />
           <Route path="/messages" element={<MessagesPage messages={props.appState.messages.messages} chats={props.appState.messages.chats} />} />
         </Route>

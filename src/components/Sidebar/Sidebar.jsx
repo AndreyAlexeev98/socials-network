@@ -1,29 +1,31 @@
 import { NavLink } from "react-router-dom";
+import FavoriteContacts from "../FavoriteContacts/FavoriteContacts";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+    console.log(props)
     return(
         <div className="root">
             <ul className="nav">
-                <li className="nav__item">
-                    <NavLink to='/'>Profile</NavLink>
-                    {/* <a NavLi href="#">Profile</a> */}
-                </li>
-                <li className="nav__item">
-                    <NavLink to='/messages'>Messages</NavLink>
-                    {/* <a href="#">Messages</a> */}
-                </li>
-                <li className="nav__item">
-                    {/* <a href="#">News</a> */}
-                </li>
-                <li className="nav__item">
-                    {/* <a href="#">Music</a> */}
-                </li> 
+                { 
+                    props.sidebar.nav.map( (item) => (
+                        <li className="nav__item" key={item.id}>
+                            <NavLink to={item.link}>{item.name}</NavLink>
+                        </li>
+                    ))
+                }
             </ul>
-        <ul className="menu">
-            <li className="menu__item">
-                {/* <a href="#">Settings</a> */}
-            </li>
-        </ul>
+            <ul className="menu">
+                {
+                    props.sidebar.menu.map( (item) => (
+                        <li className="menu__item" key={item.id}>
+                            <NavLink to={item.link}>{item.name}</NavLink>
+                        </li>
+                    ))
+                }
+            </ul>
+            <div>
+                <FavoriteContacts data={props.sidebar.favorites_contact}  />
+            </div>
         </div>
     );
 }
