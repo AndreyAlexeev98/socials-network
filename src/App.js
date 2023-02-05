@@ -1,8 +1,8 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 import MainLayout from "./layout/MainLayout/MainLayout";
-import Profile from "./pages/Profile/Profile";
-import MessagesPage from "./pages/Messages/MessagesPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import MessagesPage from "./pages/MessagesPage/MessagesPage";
 
 // import styles from "./App.module.scss";
 
@@ -11,7 +11,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<Profile />} />
+          <Route index element={<ProfilePage />} />
           <Route path="/messages" element={<MessagesPage />} />
         </Route>
       </Routes>

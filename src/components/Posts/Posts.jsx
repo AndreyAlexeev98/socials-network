@@ -3,9 +3,21 @@ import Button from '../share/Button/Button';
 
 import styles from './Posts.module.scss';
 
-console.log(styles);
-
 const Posts = () => {
+
+    let posts = [
+        {
+            id: '1',
+            username: 'Big Bull',
+            message: 'I love history'
+        },
+        {
+            id: '2',
+            username: 'Bred Borns',
+            message: 'Trevelling is my live'
+        },
+    ]
+
     return (
         <div>
             <div className={styles.title}>My posts</div>
@@ -14,10 +26,16 @@ const Posts = () => {
                 <Button text="Отправить" />
             </div>
             
-            <div className="list">
-                <Post message="Hello my friend" username="Big Bull"/>
-                <Post message="I like cake" username="Bred Born"/>
-            </div>
+            <ul className="list">
+                {posts.map((item) => {
+                    return (
+                        <li key={item.id}>
+                            <Post message={item.message} username={item.username}/>
+                        </li>
+                    )
+                    
+                })}
+            </ul>
         </div>
         
     )
