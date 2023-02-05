@@ -3,20 +3,7 @@ import Button from '../share/Button/Button';
 
 import styles from './Posts.module.scss';
 
-const Posts = () => {
-
-    let posts = [
-        {
-            id: '1',
-            username: 'Big Bull',
-            message: 'I love history'
-        },
-        {
-            id: '2',
-            username: 'Bred Borns',
-            message: 'Trevelling is my live'
-        },
-    ]
+const Posts = (props) => {
 
     return (
         <div>
@@ -27,7 +14,7 @@ const Posts = () => {
             </div>
             
             <ul className="list">
-                {posts.map((item) => {
+                {props.posts.map((item) => {
                     return (
                         <li key={item.id}>
                             <Post message={item.message} username={item.username}/>
