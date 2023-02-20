@@ -1,14 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-
-import App from './App';
 
 import './index.css';
 import state from './redux/state';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App appState={state} />
-  </React.StrictMode>
-);
+import { rerender } from './redux/rerender';
+
+rerender(state);

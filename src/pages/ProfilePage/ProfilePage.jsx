@@ -12,7 +12,7 @@ const ProfilePage = (props) => {
         <UserInfo userData={props.userData} />
       </div>
       <div className={styles.posts}>
-        <Posts posts={props.posts} />
+        <Posts addPost={props.addPost} posts={props.posts} />
       </div>
     </div>
   );

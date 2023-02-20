@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import styles from './FavoriteContacts.module.scss'
 
 const FavoriteContacts = (props) => {
-  console.log(props)
     return (
       <>
         <div className={styles.title}>

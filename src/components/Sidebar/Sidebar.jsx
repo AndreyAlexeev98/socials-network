@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import FavoriteContacts from "../FavoriteContacts/FavoriteContacts";
 
 const Sidebar = (props) => {
-    console.log(props)
     return(
         <div className="root">
             <ul className="nav">

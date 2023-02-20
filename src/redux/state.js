@@ -1,3 +1,5 @@
+import { rerender } from "./rerender";
+
 let state = {
     profile: {
         userData: {
@@ -51,6 +53,12 @@ let state = {
             
         
     } 
+}
+
+export let addPost = (postMessage) => {
+    let newPost = {id: '3', username: 'Alex Ferguson', message: postMessage};
+    state.profile.posts.push(newPost);
+    rerender(state);
 }
 
 export default state;
