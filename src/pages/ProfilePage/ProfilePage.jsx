@@ -9,10 +9,14 @@ const ProfilePage = (props) => {
     <div className="root">
       <img src={banner} alt="user baner" className={styles.banner} />
       <div className={styles.info}>
-        <UserInfo userData={props.userData} />
+        <UserInfo userData={props.profileState.userData} />
       </div>
       <div className={styles.posts}>
-        <Posts addPost={props.addPost} posts={props.posts} />
+        <Posts
+          addPost={props.addPost}
+          posts={props.profileState.posts}
+          newPostText={props.profileState.newPostText}
+        />
       </div>
     </div>
   );
