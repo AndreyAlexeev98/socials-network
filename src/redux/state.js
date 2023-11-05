@@ -1,4 +1,6 @@
-import { rerender } from "./rerender";
+let rerender = () => {
+  console.log("state changed");
+};
 
 let state = {
   profile: {
@@ -87,7 +89,7 @@ let state = {
 
 window.state = state;
 
-export let addPost = () => {
+export const addPost = () => {
   let newPost = {
     id: "3",
     username: "Alex Ferguson",
@@ -98,9 +100,13 @@ export let addPost = () => {
   rerender(state);
 };
 
-export let postChange = (value) => {
+export const postChange = (value) => {
   state.profile.newPostText = value;
   rerender(state);
+};
+
+export const subscribe = (observer) => {
+  rerender = observer;
 };
 
 export default state;
