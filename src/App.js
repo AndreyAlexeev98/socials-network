@@ -18,8 +18,9 @@ function App(props) {
             index
             element={
               <ProfilePage
-                addPost={props.addPost}
                 profileState={props.appState.profile}
+                addPost={props.addPost}
+                postChange={props.postChange}
               />
             }
           />

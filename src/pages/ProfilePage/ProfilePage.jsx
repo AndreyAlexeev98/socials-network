@@ -13,9 +13,10 @@ const ProfilePage = (props) => {
       </div>
       <div className={styles.posts}>
         <Posts
-          addPost={props.addPost}
           posts={props.profileState.posts}
           newPostText={props.profileState.newPostText}
+          addPost={props.addPost}
+          postChange={props.postChange}
         />
       </div>
     </div>

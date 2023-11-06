@@ -1,7 +1,5 @@
 import React from "react";
 import Post from "./Post/Post";
-import { postChange } from "../../redux/state";
-// import Button from '../share/Button/Button';
 
 import styles from "./Posts.module.scss";
 
@@ -13,7 +11,7 @@ const Posts = (props) => {
   };
 
   const onPostChange = (e) => {
-    postChange(textInput.current.value);
+    props.postChange(textInput.current.value);
   };
 
   return (
