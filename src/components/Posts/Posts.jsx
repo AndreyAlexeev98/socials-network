@@ -7,11 +7,12 @@ const Posts = (props) => {
   const textInput = React.createRef();
 
   let getPost = () => {
-    props.addPost();
+    props.dispatch({ type: "ADD-POST" });
   };
 
   const onPostChange = (e) => {
-    props.postChange(textInput.current.value);
+    const action = { type: "POST-CHANGE", value: textInput.current.value };
+    props.dispatch(action);
   };
 
   return (

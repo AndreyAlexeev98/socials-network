@@ -10,11 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 export const rerenderEntiredThree = (state) => {
   root.render(
     <React.StrictMode>
-      <App
-        appState={state}
-        addPost={store.addPost.bind(store)}
-        postChange={store.postChange.bind(store)}
-      />
+      <App appState={state} dispatch={store.dispatch.bind(store)} />
     </React.StrictMode>
   );
 };

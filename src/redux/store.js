@@ -86,25 +86,30 @@ const store = {
       },
     },
   },
+
   getState() {
     return this._state;
   },
-  addPost() {
-    let newPost = {
-      id: "3",
-      username: "Alex Ferguson",
-      message: this._state.profile.newPostText,
-    };
-    this._state.profile.posts.push(newPost);
-    this._state.profile.newPostText = "";
-    this._callSubscriber(this.getState());
-  },
-  postChange(value) {
-    this._state.profile.newPostText = value;
-    this._callSubscriber(this.getState());
-  },
   subscribe(observer) {
     this._callSubscriber = observer;
+  },
+
+  dispatch(action) {
+    if (action.type === "ADD-POST") {
+      let newPost = {
+        id: "3",
+        username: "Alex Ferguson",
+        message: this._state.profile.newPostText,
+      };
+      this._state.profile.posts.push(newPost);
+      this._state.profile.newPostText = "";
+      this._callSubscriber(this.getState());
+    }
+
+    if (action.type === "POST-CHANGE") {
+      this._state.profile.newPostText = action.value;
+      this._callSubscriber(this.getState());
+    }
   },
 };
 
