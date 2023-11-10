@@ -1,5 +1,9 @@
 import React from "react";
 import Post from "./Post/Post";
+import {
+  getPostActionCreater,
+  onPostChangeActionCreater,
+} from "../../redux/store";
 
 import styles from "./Posts.module.scss";
 
@@ -7,11 +11,11 @@ const Posts = (props) => {
   const textInput = React.createRef();
 
   let getPost = () => {
-    props.dispatch({ type: "ADD-POST" });
+    props.dispatch(getPostActionCreater());
   };
 
   const onPostChange = (e) => {
-    const action = { type: "POST-CHANGE", value: textInput.current.value };
+    const action = onPostChangeActionCreater(e.target.value);
     props.dispatch(action);
   };
 

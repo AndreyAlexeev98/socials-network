@@ -1,3 +1,6 @@
+const ADD_POST = "ADD-POST";
+const POSTCHANGE = "POST-CHANGE";
+
 const store = {
   _callSubscriber() {
     console.log("state changed");
@@ -95,7 +98,7 @@ const store = {
   },
 
   dispatch(action) {
-    if (action.type === "ADD-POST") {
+    if (action.type === ADD_POST) {
       let newPost = {
         id: "3",
         username: "Alex Ferguson",
@@ -106,12 +109,18 @@ const store = {
       this._callSubscriber(this.getState());
     }
 
-    if (action.type === "POST-CHANGE") {
+    if (action.type === POSTCHANGE) {
       this._state.profile.newPostText = action.value;
       this._callSubscriber(this.getState());
     }
   },
 };
+
+export const getPostActionCreater = () => ({ type: ADD_POST });
+export const onPostChangeActionCreater = (value) => ({
+  type: POSTCHANGE,
+  value: value,
+});
 
 export default store;
 window.store = store;
