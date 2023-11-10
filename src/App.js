@@ -25,12 +25,7 @@ function App(props) {
           />
           <Route
             path="/messages"
-            element={
-              <MessagesPage
-                messages={props.appState.messages.messages}
-                chats={props.appState.messages.chats}
-              />
-            }
+            element={<MessagesPage store={props.store} />}
           />
         </Route>
       </Routes>

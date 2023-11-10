@@ -1,5 +1,7 @@
 const ADD_POST = "ADD-POST";
-const POSTCHANGE = "POST-CHANGE";
+const POST_CHANGE = "POST-CHANGE";
+const CHANGE_MESSAGE = "CHANGE-MESSAGE";
+const ADD_MESSAGE = "ADD-MESSAGE";
 
 const store = {
   _callSubscriber() {
@@ -33,7 +35,7 @@ const store = {
         { id: "1", text: "Hi me dear friend, how tiy do???" },
         { id: "2", text: "By by, good look!" },
       ],
-
+      newMessage: "",
       chats: [
         {
           id: "1",
@@ -91,6 +93,7 @@ const store = {
   },
 
   getState() {
+    console.log("getState()");
     return this._state;
   },
   subscribe(observer) {
@@ -99,8 +102,9 @@ const store = {
 
   dispatch(action) {
     if (action.type === ADD_POST) {
+      const id = this._state.profile.posts.length + 1;
       let newPost = {
-        id: "3",
+        id: String(id),
         username: "Alex Ferguson",
         message: this._state.profile.newPostText,
       };
@@ -109,8 +113,23 @@ const store = {
       this._callSubscriber(this.getState());
     }
 
-    if (action.type === POSTCHANGE) {
+    if (action.type === POST_CHANGE) {
       this._state.profile.newPostText = action.value;
+      this._callSubscriber(this.getState());
+    }
+
+    if (action.type === CHANGE_MESSAGE) {
+      this._state.messages.newMessage = action.message;
+      this._callSubscriber(this.getState());
+    }
+
+    if (action.type === ADD_MESSAGE) {
+      const id = this._state.messages.messages.length + 1;
+      this._state.messages.messages.push({
+        id: String(id),
+        text: this._state.messages.newMessage,
+      });
+      this._state.messages.newMessage = "";
       this._callSubscriber(this.getState());
     }
   },
@@ -118,8 +137,18 @@ const store = {
 
 export const getPostActionCreater = () => ({ type: ADD_POST });
 export const onPostChangeActionCreater = (value) => ({
-  type: POSTCHANGE,
+  type: POST_CHANGE,
   value: value,
+});
+
+export const changeNewMessageActionCreater = (text) => ({
+  type: CHANGE_MESSAGE,
+  message: text,
+});
+
+export const addMessageActionCreater = (text) => ({
+  type: ADD_MESSAGE,
+  message: text,
 });
 
 export default store;
