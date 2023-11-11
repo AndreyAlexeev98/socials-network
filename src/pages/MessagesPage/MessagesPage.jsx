@@ -1,7 +1,7 @@
 import {
   addMessageActionCreater,
   changeNewMessageActionCreater,
-} from "../../redux/store";
+} from "../../redux/messages-reducer";
 import Chats from "../../components/Chats/Chats";
 import Messages from "../../components/Messages/Messages";
 import style from "./MessagesPage.module.scss";

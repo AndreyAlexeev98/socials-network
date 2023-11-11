@@ -3,7 +3,7 @@ import Post from "./Post/Post";
 import {
   getPostActionCreater,
   onPostChangeActionCreater,
-} from "../../redux/store";
+} from "../../redux/profile-reducer";
 
 import styles from "./Posts.module.scss";
 

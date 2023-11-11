@@ -1,8 +1,5 @@
-const ADD_POST = "ADD-POST";
-const POST_CHANGE = "POST-CHANGE";
-const CHANGE_MESSAGE = "CHANGE-MESSAGE";
-const ADD_MESSAGE = "ADD-MESSAGE";
-
+import profileReducer from "./profile-reducer";
+import messagesReducer from "./messages-reducer";
 const store = {
   _callSubscriber() {
     console.log("state changed");
@@ -101,55 +98,11 @@ const store = {
   },
 
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      const id = this._state.profile.posts.length + 1;
-      let newPost = {
-        id: String(id),
-        username: "Alex Ferguson",
-        message: this._state.profile.newPostText,
-      };
-      this._state.profile.posts.push(newPost);
-      this._state.profile.newPostText = "";
-      this._callSubscriber(this.getState());
-    }
-
-    if (action.type === POST_CHANGE) {
-      this._state.profile.newPostText = action.value;
-      this._callSubscriber(this.getState());
-    }
-
-    if (action.type === CHANGE_MESSAGE) {
-      this._state.messages.newMessage = action.message;
-      this._callSubscriber(this.getState());
-    }
-
-    if (action.type === ADD_MESSAGE) {
-      const id = this._state.messages.messages.length + 1;
-      this._state.messages.messages.push({
-        id: String(id),
-        text: this._state.messages.newMessage,
-      });
-      this._state.messages.newMessage = "";
-      this._callSubscriber(this.getState());
-    }
+    this._state.profile = profileReducer(this._state.profile, action);
+    this._state.messages = messagesReducer(this._state.messages, action);
+    this._callSubscriber(this.getState());
   },
 };
-
-export const getPostActionCreater = () => ({ type: ADD_POST });
-export const onPostChangeActionCreater = (value) => ({
-  type: POST_CHANGE,
-  value: value,
-});
-
-export const changeNewMessageActionCreater = (text) => ({
-  type: CHANGE_MESSAGE,
-  message: text,
-});
-
-export const addMessageActionCreater = (text) => ({
-  type: ADD_MESSAGE,
-  message: text,
-});
 
 export default store;
 window.store = store;
