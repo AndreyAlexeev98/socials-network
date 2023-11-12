@@ -7,7 +7,30 @@ export const onPostChangeActionCreater = (value) => ({
   value: value,
 });
 
-const profileReducer = (state, action) => {
+const initialState = {
+  userData: {
+    title: "Andrey Alexeich",
+    date_of_birth: "2 junary",
+    city: "Kursk",
+    education: 'KGU "16',
+    web_site: "www.ya.com",
+  },
+  posts: [
+    {
+      id: "1",
+      username: "Big Bull",
+      message: "I love history",
+    },
+    {
+      id: "2",
+      username: "Bred Borns",
+      message: "Trevelling is my live",
+    },
+  ],
+  newPostText: "",
+};
+
+const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case POST_CHANGE:
       state.newPostText = action.value;

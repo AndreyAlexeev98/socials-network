@@ -4,6 +4,8 @@ import MainLayout from "./layout/MainLayout/MainLayout";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import MessagesPage from "./pages/MessagesPage/MessagesPage";
 
+import store from "./redux/redux-store";
+
 // import styles from "./App.module.scss";
 
 function App(props) {
