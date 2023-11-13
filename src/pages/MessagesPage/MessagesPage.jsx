@@ -1,28 +1,9 @@
-import {
-  addMessageActionCreater,
-  changeNewMessageActionCreater,
-} from "../../redux/messages-reducer";
 import Chats from "../../components/Chats/Chats";
 import Messages from "../../components/Messages/Messages";
 import style from "./MessagesPage.module.scss";
 
 const MessagesPage = (props) => {
-  const state = props.store.getState().messages;
-  const dispatch = props.store.dispatch.bind(props.store);
-
-  const chats = state.chats;
-  const messages = state.messages;
-  const newMessage = state.newMessage;
-
-  const changeNewMessage = (e) => {
-    dispatch(changeNewMessageActionCreater(e.target.value));
-  };
-
-  const addMessage = (e) => {
-    const message = e.target.value;
-    dispatch(addMessageActionCreater(message));
-  };
-
+  const { chats, messages, value, onChange, onClick } = props;
   return (
     <div>
       <h1 className={style.title}>Мои сообщения</h1>
@@ -34,8 +15,8 @@ const MessagesPage = (props) => {
           <Messages messages={messages} />
         </div>
       </div>
-      <textarea value={newMessage} onChange={changeNewMessage}></textarea>
-      <button onClick={addMessage}>Отправить</button>
+      <textarea value={value} onChange={onChange}></textarea>
+      <button onClick={onClick}>Отправить</button>
     </div>
   );
 };

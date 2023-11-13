@@ -1,36 +1,18 @@
-import React from "react";
 import Post from "./Post/Post";
-import {
-  getPostActionCreater,
-  onPostChangeActionCreater,
-} from "../../redux/profile-reducer";
 
 import styles from "./Posts.module.scss";
 
 const Posts = (props) => {
-  const textInput = React.createRef();
-
-  let getPost = () => {
-    props.dispatch(getPostActionCreater());
-  };
-
-  const onPostChange = (e) => {
-    const action = onPostChangeActionCreater(e.target.value);
-    props.dispatch(action);
-  };
-
   return (
     <div>
       <div className={styles.title}>My posts</div>
       <div className={styles.field}>
         <textarea
-          ref={textInput}
-          onChange={onPostChange}
+          onChange={props.onPostChange}
           className={styles.input}
           value={props.newPostText}
         />
-        <button onClick={getPost}>Отправить</button>
-        {/* <Button  text="Отправить" /> */}
+        <button onClick={props.updatePost}>Отправить</button>
       </div>
 
       <ul className="list">

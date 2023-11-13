@@ -1,6 +1,6 @@
 import banner from "../../media/img/banner.jpeg";
 import UserInfo from "../../components/UserInfo/UserInfo";
-import Posts from "../../components/Posts/Posts";
+import PostsContainer from "../../components/Posts/PostsContainer";
 
 import styles from "./ProfilePage.module.scss";
 
@@ -9,14 +9,10 @@ const ProfilePage = (props) => {
     <div className="root">
       <img src={banner} alt="user baner" className={styles.banner} />
       <div className={styles.info}>
-        <UserInfo userData={props.profileState.userData} />
+        <UserInfo userData={props.store.getState().profile.userData} />
       </div>
       <div className={styles.posts}>
-        <Posts
-          posts={props.profileState.posts}
-          newPostText={props.profileState.newPostText}
-          dispatch={props.dispatch}
-        />
+        <PostsContainer store={props.store} />
       </div>
     </div>
   );
