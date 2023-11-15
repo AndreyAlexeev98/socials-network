@@ -10,15 +10,9 @@ function App(props) {
   return (
     <Router>
       <Routes>
-        <Route
-          path="/"
-          element={<MainLayout sidebar={props.appState.sidebar} />}
-        >
-          <Route index element={<ProfilePage store={props.store} />} />
-          <Route
-            path="/messages"
-            element={<MessagesPageContainer store={props.store} />}
-          />
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<ProfilePage />} />
+          <Route path="/messages" element={<MessagesPageContainer />} />
         </Route>
       </Routes>
     </Router>

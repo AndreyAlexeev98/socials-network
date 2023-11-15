@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 
-import Header from '../../components/Header/Header';
-import Sidebar from "../../components/Sidebar/Sidebar";
-import Footer from '../../components/Footer/Footer';
+import Header from "../../components/Header/Header";
+import SidebarContainer from "../../components/Sidebar/SidebarContainer";
+import Footer from "../../components/Footer/Footer";
 
 import styles from "./MainLayout.module.scss";
 
-const MainLayout = (props) => {
+const MainLayout = () => {
   return (
     <div className={styles.root}>
       <div className={styles.header}>
@@ -16,7 +16,7 @@ const MainLayout = (props) => {
       </div>
       <div className={`${styles.content} ${styles.container}`}>
         <div className={styles.sidebar}>
-          <Sidebar sidebar={props.sidebar} />
+          <SidebarContainer />
         </div>
         <div>
           <Outlet />
