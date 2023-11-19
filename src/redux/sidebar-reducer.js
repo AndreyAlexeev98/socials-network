@@ -2,6 +2,7 @@ const initialState = {
   nav: [
     { id: 1, name: "Profile", link: "/" },
     { id: 2, name: "Messages", link: "/messages" },
+    { id: 3, name: "Users", link: "/users" },
   ],
   menu: [{ id: 1, name: "Settings", link: "/settings" }],
   favorites_contact: {

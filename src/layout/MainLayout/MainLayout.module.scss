@@ -23,6 +23,7 @@
 .content {
   display: grid;
   grid-template-columns: 2fr 10fr;
+  max-width: 90vw;
 }
 
 .sidebar {
