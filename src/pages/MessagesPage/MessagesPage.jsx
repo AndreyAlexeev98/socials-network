@@ -3,7 +3,7 @@ import Messages from "../../components/Messages/Messages";
 import style from "./MessagesPage.module.scss";
 
 const MessagesPage = (props) => {
-  const { chats, messages, value, onChange, onClick } = props;
+  const { chats, messages, newMessage, onChange, onClick } = props;
   return (
     <div>
       <h1 className={style.title}>Мои сообщения</h1>
@@ -15,7 +15,7 @@ const MessagesPage = (props) => {
           <Messages messages={messages} />
         </div>
       </div>
-      <textarea value={value} onChange={onChange}></textarea>
+      <textarea value={newMessage} onChange={onChange}></textarea>
       <button onClick={onClick}>Отправить</button>
     </div>
   );
