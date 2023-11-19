@@ -1,0 +1,55 @@
+.card_list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card {
+    display: flex;
+    gap: 10px;
+}
+
+.preview {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.avatar {
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.state {
+    background-color: rgb(6, 125, 6);
+    color: #fff;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.info {
+    border-radius: 18px;
+    border: 1px solid rgb(255, 98, 0);
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 15px;
+    flex: 1;
+}
+
+.name, .location {
+    font-weight: 500;
+}
+
+.name {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.right {
+    text-align: end;
+}
