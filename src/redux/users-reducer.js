@@ -24,14 +24,14 @@ const initialState = {
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER: {
-      return { ...state, users: [...action.users] }; // tmp tmp tmp, при подгрузке новых users, нужно - к старым прибавлять новых - users: [...state.users, ...action.users], но почему то так дефолтные пользователи дублируются. Разобраться позже
+      return { ...state, users: [...state.users, ...action.users] }; // tmp tmp tmp, при подгрузке новых users, нужно - к старым прибавлять новых - users: [...state.users, ...action.users], но почему то так дефолтные пользователи дублируются. Разобраться позже
     }
     case FOLLOW: {
       return {
         ...state,
         users: state.users.map((u) => {
           if (u.id === action.userId) {
-            return { ...u, isFollower: true };
+            return { ...u, followed: true };
           }
           return u;
         }),
@@ -42,7 +42,7 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         users: state.users.map((u) => {
           if (u.id === action.userId) {
-            return { ...u, isFollower: false };
+            return { ...u, followed: false };
           }
           return u;
         }),
