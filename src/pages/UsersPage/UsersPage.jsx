@@ -6,17 +6,20 @@ import avatarPlaceholder from "../../assets/img/avatar-placeholder.png";
 const UsersPage = (props) => {
   const { users, setUsers, follow, unfollow } = props;
 
-  if (users.length === 0) {
-    axios
-      .get("https://social-network.samuraijs.com/api/1.0/users")
-      .then((response) => {
-        setUsers(response.data.items);
-      });
-  }
+  const getUsers = () => {
+    if (users.length === 0) {
+      axios
+        .get("https://social-network.samuraijs.com/api/1.0/users")
+        .then((response) => {
+          setUsers(response.data.items);
+        });
+    }
+  };
 
   return (
     <>
       <h1>users page</h1>
+      <button onClick={getUsers}>get users</button>
       <ul className={styles.card_list}>
         {users.map((user, i) => (
           <li key={user.id + i} className={styles.card}>
