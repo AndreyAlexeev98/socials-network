@@ -53,3 +53,12 @@
 .right {
     text-align: end;
 }
+
+.pagination {
+    display: flex;
+    gap: 10px;
+}
+
+.pagination_active {
+    background-color: darkgrey;
+}
