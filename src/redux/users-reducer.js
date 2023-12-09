@@ -5,32 +5,32 @@ const CHANGE_PAGE = "CHANGE_PAGE";
 const TOTAL_COUNT = "TOTAL_COUNT";
 const SET_FETCHING = "SET_FETCHING";
 
-export const setFetchingActionCreater = (isFetching) => ({
+export const switchFetching = (isFetching) => ({
   type: SET_FETCHING,
   isFetching,
 });
 
-export const setTotalUsersCountActionCreater = (count) => ({
+export const setTotalUsersCount = (count) => ({
   type: TOTAL_COUNT,
   count,
 });
 
-export const changeCurrentPageActionCreater = (page) => ({
+export const changeCurrentPage = (page) => ({
   type: CHANGE_PAGE,
   page,
 });
 
-export const setUsersActionCreater = (users) => ({
+export const setUsers = (users) => ({
   type: SET_USER,
   users,
 });
 
-export const followActionCreater = (userId) => ({
+export const follow = (userId) => ({
   type: FOLLOW,
   userId,
 });
 
-export const unfollowActionCreater = (userId) => ({
+export const unfollow = (userId) => ({
   type: UNFOLLOW,
   userId,
 });

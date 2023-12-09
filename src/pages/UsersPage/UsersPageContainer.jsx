@@ -3,12 +3,12 @@ import React from "react";
 
 import { connect } from "react-redux";
 import {
-  changeCurrentPageActionCreater,
-  followActionCreater,
-  setTotalUsersCountActionCreater,
-  setUsersActionCreater,
-  unfollowActionCreater,
-  setFetchingActionCreater,
+  changeCurrentPage,
+  follow,
+  setTotalUsersCount,
+  setUsers,
+  unfollow,
+  switchFetching,
 } from "../../redux/users-reducer";
 import UsersPage from "./UsersPage";
 
@@ -19,7 +19,7 @@ class UsersContainer extends React.Component {
   }
 
   onPageChanged = (page) => {
-    this.props.changeCurrnetPage(Number(page));
+    this.props.changeCurrentPage(Number(page));
     this.props.switchFetching(true);
     axios
       .get(
@@ -73,33 +73,42 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    switchFetching: (isFetching) => {
-      dispatch(setFetchingActionCreater(isFetching));
-    },
-    setTotalUsersCount: (count) => {
-      dispatch(setTotalUsersCountActionCreater(count));
-    },
-    changeCurrnetPage: (users) => {
-      dispatch(changeCurrentPageActionCreater(users));
-    },
-    setUsers: (page, totalCount) => {
-      dispatch(setUsersActionCreater(page, totalCount));
-    },
-    follow: (id) => {
-      dispatch(followActionCreater(id));
-    },
-    unfollow: (id) => {
-      dispatch(unfollowActionCreater(id));
-    },
-  };
-};
+// Раньше, в connect 2м аргументом передавал функцию mapDispatchToProps, где в ручную возвращал обьект, где диспатчил обьект, возвращаемый вызовом функции ActionCreater. Получалось написание кода раби работы кода. В итоге можносделать чтобы редакс сам оборачивал в диспатч результат вызова ActionCreacer -ов
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     switchFetching: (isFetching) => {
+//       dispatch(setFetchingActionCreater(isFetching));
+//     },
+//     setTotalUsersCount: (count) => {
+//       dispatch(setTotalUsersCountActionCreater(count));
+//     },
+//     changeCurrnetPage: (users) => {
+//       dispatch(changeCurrentPageActionCreater(users));
+//     },
+//     setUsers: (page, totalCount) => {
+//       dispatch(setUsersActionCreater(page, totalCount));
+//     },
+//     follow: (id) => {
+//       dispatch(followActionCreater(id));
+//     },
+//     unfollow: (id) => {
+//       dispatch(unfollowActionCreater(id));
+//     },
+//   };
+// };
+// const UsersPageContainer = connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(UsersContainer);
 
 // компонент бизнес уровня (редакс)
-const UsersPageContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UsersContainer);
+const UsersPageContainer = connect(mapStateToProps, {
+  switchFetching,
+  setTotalUsersCount,
+  changeCurrentPage,
+  setUsers,
+  follow,
+  unfollow,
+})(UsersContainer);
 
 export default UsersPageContainer;
