@@ -12,7 +12,7 @@ function App(props) {
     <Router>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<ProfilePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/messages" element={<MessagesPageContainer />} />
           <Route path="/users" element={<UsersPageContainer />} />
         </Route>

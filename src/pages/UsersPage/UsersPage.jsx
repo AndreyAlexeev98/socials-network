@@ -4,6 +4,7 @@ import styles from "./UsersPage.module.scss";
 import avatarPlaceholder from "../../assets/img/avatar-placeholder.png";
 import React from "react";
 import { Loader } from "../../components/share";
+import { Link } from "react-router-dom";
 
 const UsersPage = (props) => {
   let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
@@ -36,13 +37,17 @@ const UsersPage = (props) => {
             {props.users.map((user, i) => (
               <li key={user.id} className={styles.card}>
                 <div className={styles.preview}>
-                  <img
-                    className={styles.avatar}
-                    src={
-                      user.photos.small ? user.photos.small : avatarPlaceholder
-                    }
-                    alt="user avatar"
-                  />
+                  <Link to={"/profile/" + user.id}>
+                    <img
+                      className={styles.avatar}
+                      src={
+                        user.photos.small
+                          ? user.photos.small
+                          : avatarPlaceholder
+                      }
+                      alt="user avatar"
+                    />
+                  </Link>
                   {user.followed && (
                     <button
                       className={styles.state}
