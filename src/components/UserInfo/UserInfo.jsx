@@ -1,4 +1,3 @@
-import avatar from "../../media/img/avatar.jpg";
 import styles from "./UserInfo.module.scss";
 import { Loader } from "../../components/share";
 import avatarPlaceholderIcon from "../../assets/img/avatar-placeholder.png";
@@ -7,7 +6,6 @@ import githubIcon from "../../assets/img/github.svg";
 import vkIcon from "../../assets/img/vkontakte.svg";
 
 const UserInfo = (props) => {
-  console.log("props user info - ", props);
   if (!props.profile.profile) return <Loader />;
   const {
     aboutMe,
@@ -29,8 +27,6 @@ const UserInfo = (props) => {
   if (contacts.vk) {
     reallyContacts.push({ icon: vkIcon, link: contacts.vk });
   }
-
-  console.log(reallyContacts);
 
   return (
     <div className={styles.root}>
@@ -72,8 +68,9 @@ const UserInfo = (props) => {
                   key={item.link}
                   className={styles.socials_item}
                   target="_blank"
+                  rel="noreferrer"
                 >
-                  <img src={item.icon} />
+                  <img src={item.icon} alt="socials icon" />
                 </a>
               ))}
             </div>

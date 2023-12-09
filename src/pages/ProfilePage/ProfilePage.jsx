@@ -3,7 +3,6 @@ import UserInfo from "../../components/UserInfo/UserInfo";
 import PostsContainer from "../../components/Posts/PostsContainer";
 
 import styles from "./ProfilePage.module.scss";
-import { connect } from "react-redux";
 
 const ProfilePage = (props) => {
   return (

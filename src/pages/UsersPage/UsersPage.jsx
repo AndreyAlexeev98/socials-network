@@ -1,5 +1,3 @@
-// import { useEffect } from "react";
-import axios from "axios";
 import styles from "./UsersPage.module.scss";
 import avatarPlaceholder from "../../assets/img/avatar-placeholder.png";
 import React from "react";

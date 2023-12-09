@@ -14,10 +14,6 @@ import UsersPage from "./UsersPage";
 
 // Компонент api уровня
 class UsersContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   onPageChanged = (page) => {
     this.props.changeCurrentPage(Number(page));
     this.props.switchFetching(true);

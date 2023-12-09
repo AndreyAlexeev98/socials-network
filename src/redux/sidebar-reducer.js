@@ -1,6 +1,6 @@
 const initialState = {
   nav: [
-    { id: 1, name: "Profile", link: "/profile" },
+    // { id: 1, name: "Profile", link: "/profile" },
     { id: 2, name: "Messages", link: "/messages" },
     { id: 3, name: "Users", link: "/users" },
   ],
