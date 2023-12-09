@@ -4,6 +4,7 @@ import MainLayout from "./layout/MainLayout/MainLayout";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import MessagesPageContainer from "./pages/MessagesPage/MessagesPageContainer";
 import UsersPageContainer from "./pages/UsersPage/UsersPageContainer";
+import ProfileContainer from "./pages/ProfilePage/ProfileContainer";
 
 // import styles from "./App.module.scss";
 
@@ -12,7 +13,7 @@ function App(props) {
     <Router>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile*" element={<ProfileContainer />} />
           <Route path="/messages" element={<MessagesPageContainer />} />
           <Route path="/users" element={<UsersPageContainer />} />
         </Route>

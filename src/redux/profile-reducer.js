@@ -1,20 +1,18 @@
 const ADD_POST = "ADD-POST";
 const POST_CHANGE = "POST-CHANGE";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 export const getPostActionCreater = () => ({ type: ADD_POST });
 export const onPostChangeActionCreater = (value) => ({
   type: POST_CHANGE,
   value: value,
 });
+export const setUserProfile = (profile) => ({
+  type: SET_USER_PROFILE,
+  profile,
+});
 
 const initialState = {
-  userData: {
-    title: "Andrey Alexeich",
-    date_of_birth: "2 junary",
-    city: "Kursk",
-    education: 'KGU "16',
-    web_site: "www.ya.com",
-  },
   posts: [
     {
       id: "1",
@@ -28,6 +26,7 @@ const initialState = {
     },
   ],
   newPostText: "",
+  profile: null,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -49,6 +48,9 @@ const profileReducer = (state = initialState, action) => {
       copyState.posts.push(newPost);
       copyState.newPostText = "";
       return copyState;
+    }
+    case SET_USER_PROFILE: {
+      return { ...state, profile: action.profile };
     }
     default:
       return state;
