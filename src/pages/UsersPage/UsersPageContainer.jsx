@@ -8,6 +8,7 @@ import {
   setTotalUsersCountActionCreater,
   setUsersActionCreater,
   unfollowActionCreater,
+  setFetchingActionCreater,
 } from "../../redux/users-reducer";
 import UsersPage from "./UsersPage";
 
@@ -19,17 +20,19 @@ class UsersContainer extends React.Component {
 
   onPageChanged = (page) => {
     this.props.changeCurrnetPage(Number(page));
+    this.props.switchFetching(true);
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`
       )
       .then((response) => {
-        console.log(response);
         this.props.setUsers(response.data.items);
+        this.props.switchFetching(false);
       });
   };
 
   componentDidMount() {
+    this.props.switchFetching(true);
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currnetPage}`
@@ -37,24 +40,25 @@ class UsersContainer extends React.Component {
       .then((response) => {
         this.props.setUsers(response.data.items);
         this.props.setTotalUsersCount(response.data.totalCount);
+        this.props.switchFetching(false);
       });
-  }
-  componentDidUpdate() {
-    console.log(this.props);
   }
 
   render() {
     return (
-      // компонент UI (презентационный)
-      <UsersPage
-        totalUserCount={this.props.totalUserCount}
-        pageSize={this.props.pageSize}
-        currnetPage={this.props.currnetPage}
-        onPageChanged={this.onPageChanged}
-        users={this.props.users}
-        unfollow={this.props.unfollow}
-        follow={this.props.follow}
-      />
+      <>
+        {/* // компонент UI (презентационный) */}
+        <UsersPage
+          totalUserCount={this.props.totalUserCount}
+          pageSize={this.props.pageSize}
+          currnetPage={this.props.currnetPage}
+          onPageChanged={this.onPageChanged}
+          users={this.props.users}
+          unfollow={this.props.unfollow}
+          follow={this.props.follow}
+          isFetching={this.props.isFetching}
+        />
+      </>
     );
   }
 }
@@ -65,11 +69,15 @@ const mapStateToProps = (state) => {
     pageSize: state.users.pageSize,
     totalUserCount: state.users.totalUserCount,
     currnetPage: state.users.currnetPage,
+    isFetching: state.users.isFetching,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    switchFetching: (isFetching) => {
+      dispatch(setFetchingActionCreater(isFetching));
+    },
     setTotalUsersCount: (count) => {
       dispatch(setTotalUsersCountActionCreater(count));
     },

@@ -3,6 +3,12 @@ const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const CHANGE_PAGE = "CHANGE_PAGE";
 const TOTAL_COUNT = "TOTAL_COUNT";
+const SET_FETCHING = "SET_FETCHING";
+
+export const setFetchingActionCreater = (isFetching) => ({
+  type: SET_FETCHING,
+  isFetching,
+});
 
 export const setTotalUsersCountActionCreater = (count) => ({
   type: TOTAL_COUNT,
@@ -34,6 +40,7 @@ const initialState = {
   pageSize: 3,
   totalUserCount: 0,
   currnetPage: 1,
+  isFetching: false,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -73,6 +80,12 @@ const usersReducer = (state = initialState, action) => {
           }
           return u;
         }),
+      };
+    }
+    case SET_FETCHING: {
+      return {
+        ...state,
+        isFetching: action.isFetching,
       };
     }
     default:
