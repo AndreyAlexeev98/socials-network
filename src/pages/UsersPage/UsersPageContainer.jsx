@@ -1,7 +1,7 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { getUsers } from "../../api/api";
+import { usersAPI } from "../../api/api";
 import {
   changeCurrentPage,
   follow,
@@ -17,7 +17,7 @@ class UsersContainer extends React.Component {
   onPageChanged = (page) => {
     this.props.changeCurrentPage(Number(page));
     this.props.switchFetching(true);
-    getUsers(this.props.pageSize, page).then((data) => {
+    usersAPI.getUsers(this.props.pageSize, page).then((data) => {
       this.props.setUsers(data.items);
       this.props.switchFetching(false);
     });
@@ -25,11 +25,13 @@ class UsersContainer extends React.Component {
 
   componentDidMount() {
     this.props.switchFetching(true);
-    getUsers(this.props.pageSize, this.props.currnetPage).then((data) => {
-      this.props.setUsers(data.items);
-      this.props.setTotalUsersCount(data.totalCount);
-      this.props.switchFetching(false);
-    });
+    usersAPI
+      .getUsers(this.props.pageSize, this.props.currnetPage)
+      .then((data) => {
+        this.props.setUsers(data.items);
+        this.props.setTotalUsersCount(data.totalCount);
+        this.props.switchFetching(false);
+      });
   }
 
   render() {

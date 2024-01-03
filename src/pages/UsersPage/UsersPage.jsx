@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { setFollow, setUnfollow } from "../../api/api";
+import { followAPI } from "../../api/api";
 import avatarPlaceholder from "../../assets/img/avatar-placeholder.png";
 import { Loader } from "../../components/share";
 import styles from "./UsersPage.module.scss";
@@ -52,7 +52,7 @@ const UsersPage = (props) => {
                     <button
                       className={styles.state}
                       onClick={() => {
-                        setFollow(user.id).then((response) => {
+                        followAPI.setFollow(user.id).then((response) => {
                           if (response.data.resultCode === 0) {
                             props.follow(user.id);
                           }
@@ -66,7 +66,7 @@ const UsersPage = (props) => {
                     <button
                       className={styles.state}
                       onClick={() => {
-                        setUnfollow(user.id).then((response) => {
+                        followAPI.setUnfollow(user.id).then((response) => {
                           if (response.data.resultCode === 0) {
                             props.unfollow(user.id);
                           }
