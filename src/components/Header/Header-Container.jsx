@@ -1,27 +1,19 @@
-import Logo from "../Logo/Logo";
 import React from "react";
-import Avatar from "../../assets/img/auth-avatar.jpg";
-import PlaceholderAva from "../../assets/img/no-auth-avatar.png";
-import styles from "./Header.module.scss";
-import axios from "axios";
 import { connect } from "react-redux";
-import Header from "./Header";
+import { setAuth } from "../../api/api";
 import { setUserData } from "../../redux/auth-reducer";
+import Header from "./Header";
 
 class HeaderContainer extends React.Component {
   login = () => {
-    axios
-      .get("https://social-network.samuraijs.com/api/1.0/auth/me", {
-        withCredentials: true,
-      })
-      .then((response) => {
-        if (response.data.resultCode === 0) {
-          let { id, email, login } = response.data.data;
-          this.props.setUserData(id, email, login, true);
-        } else {
-          alert(`${response.data.messages[0]}`);
-        }
-      });
+    setAuth().then((response) => {
+      if (response.data.resultCode === 0) {
+        let { id, email, login } = response.data.data;
+        this.props.setUserData(id, email, login, true);
+      } else {
+        alert(`${response.data.messages[0]}`);
+      }
+    });
   };
 
   render() {

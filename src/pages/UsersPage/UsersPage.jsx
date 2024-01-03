@@ -1,9 +1,9 @@
-import styles from "./UsersPage.module.scss";
-import avatarPlaceholder from "../../assets/img/avatar-placeholder.png";
 import React from "react";
-import { Loader } from "../../components/share";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { setFollow, setUnfollow } from "../../api/api";
+import avatarPlaceholder from "../../assets/img/avatar-placeholder.png";
+import { Loader } from "../../components/share";
+import styles from "./UsersPage.module.scss";
 
 const UsersPage = (props) => {
   console.log(props.users);
@@ -52,19 +52,11 @@ const UsersPage = (props) => {
                     <button
                       className={styles.state}
                       onClick={() => {
-                        axios
-                          .post(
-                            `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
-                            null,
-                            {
-                              withCredentials: true,
-                            }
-                          )
-                          .then((response) => {
-                            if (response.data.resultCode === 0) {
-                              props.follow(user.id);
-                            }
-                          });
+                        setFollow(user.id).then((response) => {
+                          if (response.data.resultCode === 0) {
+                            props.follow(user.id);
+                          }
+                        });
                       }}
                     >
                       Follow
@@ -74,18 +66,11 @@ const UsersPage = (props) => {
                     <button
                       className={styles.state}
                       onClick={() => {
-                        axios
-                          .delete(
-                            `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
-                            {
-                              withCredentials: true,
-                            }
-                          )
-                          .then((response) => {
-                            if (response.data.resultCode === 0) {
-                              props.unfollow(user.id);
-                            }
-                          });
+                        setUnfollow(user.id).then((response) => {
+                          if (response.data.resultCode === 0) {
+                            props.unfollow(user.id);
+                          }
+                        });
                       }}
                     >
                       unFollow
