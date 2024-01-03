@@ -3,8 +3,10 @@ import avatarPlaceholder from "../../assets/img/avatar-placeholder.png";
 import React from "react";
 import { Loader } from "../../components/share";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const UsersPage = (props) => {
+  console.log(props.users);
   let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
@@ -50,7 +52,19 @@ const UsersPage = (props) => {
                     <button
                       className={styles.state}
                       onClick={() => {
-                        props.unfollow(user.id);
+                        axios
+                          .post(
+                            `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
+                            null,
+                            {
+                              withCredentials: true,
+                            }
+                          )
+                          .then((response) => {
+                            if (response.data.resultCode === 0) {
+                              props.follow(user.id);
+                            }
+                          });
                       }}
                     >
                       Follow
@@ -60,7 +74,18 @@ const UsersPage = (props) => {
                     <button
                       className={styles.state}
                       onClick={() => {
-                        props.follow(user.id);
+                        axios
+                          .delete(
+                            `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
+                            {
+                              withCredentials: true,
+                            }
+                          )
+                          .then((response) => {
+                            if (response.data.resultCode === 0) {
+                              props.unfollow(user.id);
+                            }
+                          });
                       }}
                     >
                       unFollow

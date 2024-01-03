@@ -19,7 +19,10 @@ class UsersContainer extends React.Component {
     this.props.switchFetching(true);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`
+        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`,
+        {
+          withCredentials: true,
+        }
       )
       .then((response) => {
         this.props.setUsers(response.data.items);
@@ -31,7 +34,10 @@ class UsersContainer extends React.Component {
     this.props.switchFetching(true);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currnetPage}`
+        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currnetPage}`,
+        {
+          withCredentials: true,
+        }
       )
       .then((response) => {
         this.props.setUsers(response.data.items);
