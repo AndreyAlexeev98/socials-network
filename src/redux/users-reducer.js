@@ -4,6 +4,13 @@ const UNFOLLOW = "UNFOLLOW";
 const CHANGE_PAGE = "CHANGE_PAGE";
 const TOTAL_COUNT = "TOTAL_COUNT";
 const SET_FETCHING = "SET_FETCHING";
+const SET_FOLLOW_PROCESS = "SET_FOLLOW_PROCESS";
+
+export const switchFollowProcess = (isFetching, userId) => ({
+  type: SET_FOLLOW_PROCESS,
+  isFetching,
+  userId,
+});
 
 export const switchFetching = (isFetching) => ({
   type: SET_FETCHING,
@@ -41,6 +48,7 @@ const initialState = {
   totalUserCount: 0,
   currnetPage: 1,
   isFetching: false,
+  isFollowProcess: [],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -86,6 +94,14 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: action.isFetching,
+      };
+    }
+    case SET_FOLLOW_PROCESS: {
+      return {
+        ...state,
+        isFollowProcess: action.isFetching
+          ? [...state.isFollowProcess, action.userId]
+          : state.isFollowProcess.filter((id) => id !== action.userId),
       };
     }
     default:

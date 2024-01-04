@@ -9,6 +9,7 @@ import {
   setUsers,
   switchFetching,
   unfollow,
+  switchFollowProcess,
 } from "../../redux/users-reducer";
 import UsersPage from "./UsersPage";
 
@@ -47,6 +48,8 @@ class UsersContainer extends React.Component {
           unfollow={this.props.unfollow}
           follow={this.props.follow}
           isFetching={this.props.isFetching}
+          switchFollowProcess={this.props.switchFollowProcess}
+          isFollowProcess={this.props.isFollowProcess}
         />
       </>
     );
@@ -60,6 +63,7 @@ const mapStateToProps = (state) => {
     totalUserCount: state.users.totalUserCount,
     currnetPage: state.users.currnetPage,
     isFetching: state.users.isFetching,
+    isFollowProcess: state.users.isFollowProcess,
   };
 };
 
@@ -99,6 +103,7 @@ const UsersPageContainer = connect(mapStateToProps, {
   setUsers,
   follow,
   unfollow,
+  switchFollowProcess,
 })(UsersContainer);
 
 export default UsersPageContainer;

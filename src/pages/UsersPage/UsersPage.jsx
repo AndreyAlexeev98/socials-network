@@ -6,7 +6,6 @@ import { Loader } from "../../components/share";
 import styles from "./UsersPage.module.scss";
 
 const UsersPage = (props) => {
-  console.log(props.users);
   let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
@@ -52,26 +51,36 @@ const UsersPage = (props) => {
                     <button
                       className={styles.state}
                       onClick={() => {
-                        followAPI.setFollow(user.id).then((response) => {
+                        props.switchFollowProcess(true, user.id);
+                        followAPI.setUnfollow(user.id).then((response) => {
                           if (response.data.resultCode === 0) {
-                            props.follow(user.id);
+                            props.unfollow(user.id);
                           }
+                          props.switchFollowProcess(false, user.id);
                         });
                       }}
+                      disabled={props.isFollowProcess.some(
+                        (id) => id === user.id
+                      )}
                     >
                       Follow
                     </button>
                   )}
                   {!user.followed && (
                     <button
-                      className={styles.state}
+                      className={`${styles.state} ${styles.warning}`}
                       onClick={() => {
-                        followAPI.setUnfollow(user.id).then((response) => {
+                        props.switchFollowProcess(true, user.id);
+                        followAPI.setFollow(user.id).then((response) => {
                           if (response.data.resultCode === 0) {
-                            props.unfollow(user.id);
+                            props.follow(user.id);
                           }
+                          props.switchFollowProcess(false, user.id);
                         });
                       }}
+                      disabled={props.isFollowProcess.some(
+                        (id) => id === user.id
+                      )}
                     >
                       unFollow
                     </button>

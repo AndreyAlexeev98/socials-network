@@ -35,6 +35,11 @@
     &:hover {
         transform: scale(1.2)
     }
+    &[disabled]{
+        background-color: grey;
+        transform: scale(1);
+        cursor: default;
+    }
 }
 
 .warning {
